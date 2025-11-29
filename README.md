@@ -13,7 +13,6 @@ This project is a robust, **fact-checked news detection system** leveraging both
 
 - **Trained on:** [Fake.csv and True.csv](https://www.kaggle.com/clmentbisaillon/fake-and-real-news-dataset) (44k+ balanced samples)
 - **Model:** DistilBERT fine-tuned for binary news veracity classification
-- **Augmented with:** NewsAPI for better generalization and freshness
 - **Post-2021 news:** Automatically cross-checked via [Google Fact Check API](https://developers.google.com/fact-check/tools/api)
 - **Deployment:** [Streamlit app](https://huggingface.co/spaces/Ravichandrachilde/fact-checked-news-detector) on Hugging Face Spaces
 - **Everything managed on Hugging Face Hub:** 
@@ -86,7 +85,6 @@ All model and dataset files are hosted on Hugging Face Hub, not in this repo:
 - Combined and labeled Kaggle's Fake/True News CSVs.
 - Built a `statement` column (title + text).
 - Stratified train/val/test splits (80/10/10).
-- Augmented with NewsAPI (optionally, for better coverage).
 
 ### 2. **Data Balancing**
 - Used `RandomOverSampler` (avoids SMOTE's text issues).
@@ -106,7 +104,7 @@ All model and dataset files are hosted on Hugging Face Hub, not in this repo:
 
 ### 6. **Streamlit App (Deployed)**
 - Loads model and data directly from HF Hub.
-- Features single/batch prediction, API augmentation, and Fact Check API override.
+- Features single prediction and Fact Check API override.
 - **Key Logic:** If news is post-2021 and labeled "fake" by model, Google Fact Check API result overrides model prediction if available.
 
 ---
@@ -149,9 +147,10 @@ All model and dataset files are hosted on Hugging Face Hub, not in this repo:
 
 ## 🚧 Limitations & Future Work
 
-- **Model is only as good as training data**; NewsAPI and Google API help mitigate recency bias.
+- **Model is only as good as training data**; Google API help mitigate recency bias.
 - Fact Check API may have limited coverage for niche or extremely fresh news.
 - UI/UX could be further enhanced (e.g., timeline view, more granular feedback).
+- LLM API key integration for summarizer.
 
 ---
 
