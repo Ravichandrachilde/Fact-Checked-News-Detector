@@ -1,9 +1,5 @@
 streamlit
 transformers
 torch
-torchvision
-torchaudio
-pandas
 requests
 huggingface_hub
-accelerate
